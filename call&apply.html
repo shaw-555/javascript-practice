@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script type="text/javascript">
+Function.prototype.myApply = function(content= window, ...args){
+    content = content ? Object(content): window;
+    let func = this;
+    let fn = Symbol("fn");
+    content[fn] = func;
+
+    let res = content[fn](...args);
+   
+    
+
+    delete content.fn;
+
+    return res;
+}
+
+Function.prototype.myCall = function(content,args){
+    // 如果有content，令其为对象；否则，令之为window
+    content = content ? Object(content): window;
+    // 谨记，this为函数
+    let func = this;
+    // 创造独一无二的索引
+    let fn = Symbol("fn");
+
+    content.fn = func;
+    // 先返回结果，结果为指向另一个变量，所以不会受到后面 delete content.fn 而影响
+    let res = content.fn(args);
+    // 删掉避免产生命名冲突
+    delete content.fn;
+
+    return res;
+}
+
+
+
+console.log(Object.prototype.toString.myCall([]));
+
+</script>
+</html>

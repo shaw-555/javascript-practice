@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="button" value="createArr" onclick="display()">
+</body>
+<script type="text/javascript">
+function createArray(n){
+    var arr = [];
+    for(n>0 ; n; n--){
+        arr.push(n);
+    }
+    return arr;
+}
+
+function display(){
+    var a = createArray(10);
+    document.write(a+ '<br><br>');
+
+    var b = mergeSort(a);
+    console.log('after sorted'+ b);
+}
+
+function swap(a,b){
+    var aux = a;
+    a = b;
+    b= aux;
+}
+
+// document.write(a);
+// function selectSort(arr){
+//     var length = arr.length;
+//     var j;
+//     var minIndex;
+
+//     for(var i =0 ; i < length -1; i++){
+//         minIndex = i;
+//         console.log(arr[minIndex]);
+//         for( j=i;j< length; j++){
+//             if( arr[minIndex] > arr[j] ){
+//                 minIndex = j;
+//                 console.log('minIndex is '+ minIndex);
+                
+//             }
+//         }
+//         console.log('before judge ',minIndex,i);
+        
+//         if( minIndex !== i){
+//                 console.log('before swap: '+arr[minIndex], arr[i]);  
+//                 var aux = arr[minIndex];
+//                 arr[minIndex] = arr[i];
+//                 arr[i] = aux;
+//                 console.log('swap: '+arr[minIndex], arr[i]);    
+//                 document.write(arr+ '<br><br>')
+//         }
+        
+//     }
+    
+//     return arr;
+    
+// }
+
+function mergeSort(arr){
+    var count = 0;
+    var length = arr.length;
+    if(length < 2) {
+        return arr;
+    }
+
+    var middle = Math.floor(length/2);
+    var left = arr.slice(0,middle);
+    var right = arr.slice(middle);
+    console.table(++count);
+    
+    return merge(mergeSort(left),mergeSort(right));
+}
+
+function merge(left,right){
+    var result = [];
+    var i = 0;
+    var j = 0;
+
+    while( i < left.length && j < right.length) {
+        if (left[i] > right[j]){
+            result.push(right[j++]);
+            
+        }else{
+            result.push(left[i++]);
+        }
+    }
+    while(i < left.length){
+        result.push(left[i++]);
+    }
+
+    while(j < right.length){
+        result.push(right[j++]);
+    }
+
+    return result;
+}
+
+</script>
+</html>

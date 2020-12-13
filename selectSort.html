@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="button" value="createArr" onclick="display()">
+</body>
+<script type="text/javascript">
+function createArray(n){
+    var arr = [];
+    for(n>0 ; n; n--){
+        arr.push(n);
+    }
+    return arr;
+}
+
+function display(){
+    var a = createArray(10);
+    document.write(a+ '<br><br>');
+
+    var b = selectSort(a);
+    console.log('after sorted'+ b);
+}
+
+function swap(a,b){
+    var aux = a;
+    a = b;
+    b= aux;
+}
+
+// document.write(a);
+// function selectSort(arr){
+//     var length = arr.length;
+//     var j;
+//     var minIndex;
+
+//     for(var i =0 ; i < length -1; i++){
+//         minIndex = i;
+//         console.log(arr[minIndex]);
+//         for( j=i;j< length; j++){
+//             if( arr[minIndex] > arr[j] ){
+//                 minIndex = j;
+//                 console.log('minIndex is '+ minIndex);
+                
+//             }
+//         }
+//         console.log('before judge ',minIndex,i);
+        
+//         if( minIndex !== i){
+//                 console.log('before swap: '+arr[minIndex], arr[i]);  
+//                 var aux = arr[minIndex];
+//                 arr[minIndex] = arr[i];
+//                 arr[i] = aux;
+//                 console.log('swap: '+arr[minIndex], arr[i]);    
+//                 document.write(arr+ '<br><br>')
+//         }
+        
+//     }
+    
+//     return arr;
+    
+// }
+
+function selectSort(array){
+    var length = array.length,
+        minIndex;
+
+    for( let i = 0; i < length; i++){
+        minIndex = i;
+        console.log(i);
+        
+        for(let j= i; j<length; j++){
+            if(array[minIndex] > array[j]){
+                minIndex = j;
+            }
+            console.log(minIndex);
+            console.log(array);
+            
+        }
+        if ( minIndex !== i){
+            aux = array[i];
+            array[i] = array[minIndex];
+            array[minIndex] = aux;
+        }
+    }
+
+    return array;
+}
+
+</script>
+</html>

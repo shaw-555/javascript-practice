@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="button" value="createArr" onclick="display()">
+</body>
+<script type="text/javascript">
+function createArray(n){
+    var arr = [];
+    for(n>0 ; n; n--){
+        arr.push(n);
+    }
+    return arr;
+}
+
+function display(){
+    var a = createArray(10);
+    document.write(a+ '<br><br>');
+
+    var b = insertionSort(a);
+    console.log('after sorted'+ b);
+}
+
+function swap(a,b){
+    var aux = a;
+    a = b;
+    b= aux;
+}
+
+// document.write(a);
+function insertionSort(arr){
+    var length = arr.length,
+        j, temp;
+
+    for(var i=1 ; i< length;i++){
+        // 锚定，另j=i，则每次插入第i个值
+        j = i;
+        // temp为到时要被插入的值，j为要被插入的位置
+        temp = arr[i];
+        console.log('temp is' + temp,'i is '+ i);
+        while( j> 0 && arr[j-1]> temp){
+            arr[j] = arr[j-1];
+            console.log(arr);
+            j--;
+        }
+        arr[j] = temp;
+        console.log(arr);
+
+    }
+    
+    return arr;
+    
+}
+
+function insertionSort(arr){
+    var length = arr.length,
+    j,temp;
+
+    for(var i = 1; i < length; i++){
+        j = i
+        temp = arr[i];
+
+        while(j >0 && arr[j-1] > temp){
+            arr[j] = arr[j-1];
+            j--;
+        }
+        arr[j] = temp;
+    }
+
+    return arr;
+}
+
+var a = 10
+function b(){
+    a = 20;
+}
+b();
+console.log(a);
+
+</script>
+</html>

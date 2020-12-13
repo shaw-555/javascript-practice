@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="button" value="createArr" onclick="display()">
+</body>
+<script type="text/javascript">
+function createArray(n){
+    // 生成一个倒叙数组
+    var arr = [];
+    for(n>0 ; n; n--){
+        arr.push(n);
+    }
+    return arr;
+}
+
+function display(){
+    var a = createArray(10);
+    document.write(a+ '<br>');
+
+    var b = bubbleSort(a);
+    console.log('after bubblesorted'+ b);
+}
+
+// document.write(a);
+// function bubbleSort(arr){
+//     var length = arr.length;
+//     for(var i= 0; i< length-1; i++){
+//         for(var j=0; j < length-i-1; j++){
+//             if(arr[j] > arr[j+1]){
+//                 // 打印产生前比后大大情况
+//                 document.write('arr[j]>arr[j+1]: ',arr[j] + '> ' +arr[j+1] + '<br>');
+//                 var aux = arr[j+1];
+//                 arr[j+1] = arr[j];
+//                 arr[j] = aux;
+//                 // 打印互换后各项的结果
+//                 document.write('swap arr[j] and arr[j+1]', ' arr[j] is '+ arr[j], ' arr[j+1] is ' + arr[j+1] + '<br>' )
+//                 // 打印互换后数组的状态
+//                 document.write('arr now is '+ arr + '<br>');
+//             }
+//         }
+//     }
+//     return arr;
+// }
+var swap = function(a,b){
+    var aux = a;
+    a = b;
+    b = aux;
+}
+function bubbleSort(array){
+    var length =array.length;
+
+    function swap(a,b){
+        var aux = array[a];
+        array[a] = array[b];
+        array[b] = aux;
+    }
+
+    for(let i =0 ; i< length; i++){
+        for(let j = 0; j<length-i-1; j++){
+            if(array[j]>array[j+1]){
+                // var aux = array[j];
+                // array[j] = array[j+1];
+                // array[j+1] = aux;
+                swap(j,j+1);
+                console.log(array[j],array[j+1]);
+                
+            }
+        }
+    }
+    return array;
+}
+</script>
+</html>

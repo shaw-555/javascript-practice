@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script type='text/javascript'>
+function create(proto){
+    // 生成一个新的函数对象
+    function F();
+    // 让新的函数对象的原型指向proto参数
+    F.prototype = proto;
+    // 新的函数对象改变proto后，其prototype下的constructor不再指向F，而是proto的函数名称
+    // 所以此时要对prototype下的constructor的指向进行回指
+    F.prototype.constrcutor = F;
+
+    return new F();
+}
+</script>
+</html>
