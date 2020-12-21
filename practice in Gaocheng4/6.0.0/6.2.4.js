@@ -8,3 +8,4 @@
 
 if (Array.isArray(value)){ // 操作数组
 }
+// isArray是为了解决网站内不同框架可能会产生数组原型混淆而产生的
