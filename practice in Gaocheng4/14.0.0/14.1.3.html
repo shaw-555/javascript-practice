@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <div id="myDiv" lang="en" class="hehe">
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+    </div>
+</head>
+<body>
+    
+</body>
+<script type="text/javascript">
+    //节点层级之element类型
+    // nodeType 为 1
+    // nodeName 为标签名
+    // parentNode为 document或 element
+    
+
+    // let myDiv = document.getElementById('myDiv');
+
+    // console.log(myDiv);
+    
+    // console.log(myDiv.tagName);
+    
+    // console.log(myDiv.tagName === myDiv.nodeName);
+
+    // console.log(myDiv.nodeType);
+
+    // console.log(myDiv.nodeValue);
+    
+    // 这个元素的所有熟悉都可以通过js获取
+    // console.log(myDiv.name);
+    // console.log(myDiv.id);
+    // console.log(myDiv.className);
+    // console.log(myDiv.lang);
+    // console.log(myDiv.title);
+    
+    // myDiv.id = "someOtherId";
+    // myDiv.className = "ft";
+    // myDiv.title = "Some other text";
+    // myDiv.lang = "fr";
+    // myDiv.dir ="rtl";
+
+    // console.log(myDiv.name);
+    // console.log(myDiv.id);
+    // console.log(myDiv.className);
+    // console.log(myDiv.lang);
+    // console.log(myDiv.title);
+
+    // 2. 取得属性
+    let div = document.getElementById("myDiv");
+    // console.log(div)
+    // alert(div.getAttribute("id"));     
+    // alert(div.getAttribute("className"));  
+    // alert(div.getAttribute("title"));  
+    // alert(div.getAttribute("lang"));  
+    // alert(div.getAttribute("dir"));    
+
+    // div.setAttribute("id", "someOtherId");
+    // div.setAttribute("class", "ft");
+    // div.setAttribute("title", "Some other text");
+    // div.setAttribute("lang","fr");
+    // div.setAttribute("dir", "rtl");
+
+    // alert(div.getAttribute("id"));     
+    // alert(div.getAttribute("className"));  
+    // alert(div.getAttribute("title"));  
+    // alert(div.getAttribute("lang"));  
+    // alert(div.getAttribute("dir")); 
+
+    console.log(div.children);
+    console.log(div.childNodes);
+
+    // 其实说来说去，常用的就是getElmentById、getAttribute、setAttribute、removeAttribute
+</script>
+</html>

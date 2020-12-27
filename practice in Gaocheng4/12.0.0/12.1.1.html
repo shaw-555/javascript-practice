@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script type="text/javascript">
+    var age = 29;
+    // let age = 29;
+    console.log(window.age); 
+    console.log(this);
+    console.log(window);
+    console.log(this === window);
+    
+    // 结论，用let 声明的关键字是无法挂载值windows对象上的,
+    // 其返回值是undefined
+
+
+    const sayAge = () => console.log(window.age);
+    sayAge();
+    console.log(window.age);
+    console.log(window.sayAge);
+    window.sayAge();// 12.1.1.html:64 Uncaught TypeError: window.sayAge is not a function
+    
+</script>
+</html>

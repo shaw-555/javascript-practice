@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script type="text/javascript">
+    let pageWidth = window.innerWidth,
+        pageHeight = window.innerHeight;
+    
+
+    console.log(pageWidth,pageHeight);
+    
+    let pageWidth2 = window.outerWidth,
+        pageHeight2 = window.outerHeight;
+
+        console.log(pageWidth2,pageHeight2);
+
+// outer的大小属性是比inner的大小属性大
+// outer的表示的是浏览器的大小，inner表示的是窗口的大小
+window.scrollBy(0, 100);
+console.log(window.scrollBy(0, 100));
+console.log(typeof window.scroll());
+
+window.open("http://www.wrox.com/", "topFrame");
+</script>
+</html>

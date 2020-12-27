@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <div id="myDiv" lang="en" class="hehe">
+        <li></li>
+        <li class="kono"></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+    </div>
+</head>
+<body>
+    
+</body>
+<script type="text/javascript">
+    let myDiv = document.querySelector('#myDiv');
+    console.log(myDiv);
+
+    let kono = document.querySelector('.kono');
+    console.log(kono);
+    console.log(kono.toString());
+    console.log(typeof kono);
+    console.log(kono instanceof Node);
+    
+    
+    let lis = document.querySelectorAll('li');
+    console.log(lis); // 得到的nodeList是一个静态的快照，这样可以最大程度的节省性能
+    
+</script>
+</html>

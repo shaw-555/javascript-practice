@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script type="text/javascript">
+    //节点层级之document类型
+    // nodeType9.没有parentNode，是HTMLdocument的接口
+    // nodeValue 为null
+    // nodeName 为 '#document'
+    let html = document.documentElement;
+
+    console.log(html);
+
+    console.log(html.nodeType);
+    alert( document.documentElement === document.firstChild);
+    alert( document.documentElement === document.childNodes[0]);
+    // 一般来说，appendChild()、removeChild()和 replaceChild()方法不会用在 
+    // document 对象 上。这是因为文档类型(如果存在)是只读的，而且只能有一个 Element 
+    // 类型的子节点(即<html>， 已经存在了)
+</script>
+</html>
