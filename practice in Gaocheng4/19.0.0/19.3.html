@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <select name="location" id="selLocation">
+        <option value="Sunnyvale, CA" id="selLocation">Sunnyvale</option>
+        <option value="Los Angeles, CA">Los Angeles</option>
+        <option value="Mountain View, CA">Mountain View</option>
+        <option value="">China</option>
+        <option>Australia</option>
+    </select>
+</body>
+<script type="text/javascript">
+    let selectbox = document.getElementById("selLocation");
+    let newOption = document.createElement("option"); 
+    newOption.appendChild(document.createTextNode("Option text222")); 
+    newOption.setAttribute("value", "Option value");
+    selectbox.appendChild(newOption);
+</script>
+</html>
