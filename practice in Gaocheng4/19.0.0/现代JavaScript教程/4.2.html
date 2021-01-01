@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style type="text/css">
+        .invalid{
+            border-color: black;
+        }
+
+        #error {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    Your email please: <input type="text" id="input">
+    <div id="error"></div>
+    <select name="" id="">
+        <option value=""></option>
+        <option value=""></option>
+        <option value=""></option>
+        <option value=""></option>
+        <option value=""></option>
+    </select>
+</body>
+<script type="text/javascript">
+    // focus/blur 事件
+    // 当元素聚焦时，会触发 focus 事件，当元素失去焦点时，会触发 blur 事件。
+    input.onblur = function(){
+        if(!input.value.includes('@')){
+            // input.focus  让焦点回来
+            input.focus();
+            input.classList.add('invalid');
+            error.innerHTML = "Please a correct email";
+            
+        }
+    };
+
+    input.onfocus = function(){
+        if(input.classList.contains('invalid')){
+            input.classList.remove('invalid');
+            error.innerHTML = "";
+        }
+    }
+</script>
+</html>

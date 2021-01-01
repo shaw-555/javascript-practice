@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form name="test" id="test">
+        <input type="text" name="first">
+        <input type="text" name="second">
+    </form>
+
+    <form name="vite">
+        <radio name="radio"></radio>
+        <radio name="radio"></radio>
+        <radio name="radio"></radio>
+    </form>
+</body>
+<script type="text/javascript">
+    // 在es6中表单的基本操作，表单是挂载在document对象上的一个对象
+    let forms = document.forms.test;
+    console.log(forms);
+    
+    let formFirst = forms.elements.first;
+    console.log(formFirst);
+
+    let formSecond = forms.elements[1];
+    console.log(formSecond);
+    
+    let vite= document.forms["vite"];
+    console.log(vite);
+    
+    let formRadio = vite.elements.radio;
+    console.log(formRadio);
+    
+</script>
+</html>

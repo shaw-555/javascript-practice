@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="button" value="press me" id="btn">
+</body>
+<script type="text/javascript">
+    // 鼠标和滚轮事件
+    var btn = document.getElementById("btn");
+    btn.addEventListener('mousedown', () => console.log('1.it is mousedown'));
+    btn.addEventListener('mouseup', () => console.log('2.it is mouseup'));
+    btn.addEventListener('click', () => console.log('3.it is click'));
+    // 结论，mousedown、mouseup、click的触发顺序为 mousedown、mouseup、click
+</script>
+</html>
