@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script type="text/javascript">
+    // 我们真正需要关心的就是xhr.readyState === 4 
+    let xhr = new XMLHttpRequest();
+    console.log(xhr);
+    document.write(xhr);
+
+    xhr.open('get',"",true);
+    console.log(xhr);
+    
+    xhr.send('刘云最美');
+
+    xhr.open("get", "example.txt", false);
+    xhr.send(null);
+    if ((xhr.status >= 200 && xhr.status < 300) || xhr.status == 304) {
+      alert(xhr.responseText);
+    } else {
+      alert("Request was unsuccessful: " + xhr.status);
+    }
+</script>
+</html>

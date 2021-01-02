@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style type="text/css">
+        .invalid{
+            border-color: black;
+        }
+
+        #error {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    Please enter your info: <input type="text" id="input">
+
+    <select name="hello google" id=""  onchange="alert(this.value)">
+        please choose what you want
+        <option value="1">IIIIIIIIIIIIIIII</option>
+        <option value="2">IIIIIIIIIIIIIIII</option>
+        <option value="3">IIIIIIIIIIIIIIII</option>
+        <option value="4">IIIIIIIIIIIIIIII</option>
+        <option value="5">IIIIIIIIIIIIIIII</option>
+    </select>
+
+    <input type="text" id="bind"> what i get： <span id="result"></span>
+</body>
+<script type="text/javascript">
+    // submit事件，在提交表单时会发生
+
+    input.onchange = function(){
+        alert(this.value);
+    }
+
+    // input事件，在框中的值发生变化时触发
+    // 用oninput来模拟一个数据双向绑定
+    bind.oninput = function(){
+        result.innerHTML = bind.value;
+    }
+</script>
+</html>
