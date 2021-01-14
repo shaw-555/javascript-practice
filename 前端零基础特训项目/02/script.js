@@ -61,3 +61,6 @@ container.addEventListener("click", e => {
 
 // 设置初始座位和总票价
 undateSeletedCount();
+undateSeletedCount();
+undateSeletedCount();
+undateSeletedCount();
