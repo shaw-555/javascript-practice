@@ -48,3 +48,33 @@ console.log(map.keys());
 console.log(map.entries());
 
 
+const ma = new Map([
+    ["key1",1],
+    ["key3",3],
+    ["key5",5],
+    ["key2",2],
+    ["key4",4]
+]);
+console.log(ma);
+
+console.log(ma.has(undefined));// ma已经被定义了
+
+const lo = new Map([[]]);
+console.log(lo); //{ undefined => undefined }
+console.log(lo.has(undefined));
+
+const la = new Map([{}]);
+
+const sy = Symbol("sy");
+console.log(la); //{ undefined => undefined }
+la.set(true,()=>{ console.log("hello world" )});
+la.set(zhangyang,"galilia");
+la.set(sy,123)
+console.log(la.has(undefined));
+console.log(la); 
+
+
+// 与 Object 只能使用数值、字符串或符号作为键不同，Map 可以使用任何 JavaScript 数据类型作为 键。
+function zhangyang(){
+    console.log("galilia");
+}
