@@ -24,6 +24,16 @@ function createFamily(number,man,woman){
     return o;
 }
 
+// 工厂模式
+function createCode(time,code,author){
+    let o = new Object();
+    o.code =code;
+    o.time = time;
+    o.author = author;
+}
+
+let code = createCode();
+
 let person = createPerson('a','b','c');
 let person = createCar('a','b','c');
 let person = createFamily('a','b','c');
