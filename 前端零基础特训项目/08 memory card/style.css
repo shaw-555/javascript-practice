@@ -1,0 +1,189 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    margin: 0;
+    overflow: hidden; /* 消除滚动条 */
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+h1 {
+    position: relative;
+}
+
+h1 button {
+    position: absolute;
+    right: 0;
+    transform: translate(120%, -50%);
+    z-index: 2;
+}
+
+.btn {
+    cursor: pointer;
+    background-color: #fff;
+    border: 1px solid #aaa;
+    border-radius: 3px;
+    font-size: 14px;
+    margin-top: 20px;
+    padding: 10px 15px;
+}
+
+.btn-small {
+    font-size: 12px;
+    padding: 5px 12px;
+}
+
+.btn-ghost {
+    border: 0;
+    background-color: transparent;
+}
+
+.clear {
+    position: absolute;
+    bottom: 30px;
+    left: 30px;
+}
+
+.cards {
+    perspective: 1000px;
+    position: relative;
+    height: 300px;
+    width: 500px;
+    max-width: 100%;
+}
+
+.card {
+    position: absolute;
+    opacity: 0;
+    font-size: 1.5em;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    transform: translateX(50%) rotateY(-10deg);
+    transition: transform 0.4s ease, opacity 0.4s ease;
+}
+
+.card.active {
+    opacity: 1;
+    cursor: pointer;
+    z-index: 10;
+    transform: translateX(0%) rotateY(0);
+}
+
+.card-left{
+    transform: translateX(-50%) rotateY(10deg);
+}
+
+.inner-card {
+    box-shadow: 0 1px 10px rgba(0, 0, 0, 0.3);
+    border-radius: 4px;
+    height: 100%;
+    width: 100%;
+    position: relative;
+    transform-style: preserve-3d;
+    transition: transform 0.4s ease;
+}
+
+.card.show-answer .inner-card{
+    transform: rotateX(180deg);
+}
+
+.inner-card-front,
+.inner-card-back {
+    backface-visibility: hidden;/* 届时隐藏背面 */
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    width: 100%;
+    background-color: #fff;
+}
+
+.inner-card-front {
+    transform: rotateX(0deg);
+    z-index: 2;
+}
+
+.inner-card-back {
+    transform: rotateX(180deg);
+}
+
+.inner-card-front::after,
+.inner-card-back::after {
+    content: "\f021 Flip";
+    font-family: "Font Awesome 5 Free";
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-weight: blod;
+    font-size: 16px;
+    color: #333;
+}
+
+.add-container {
+    position: absolute;
+    z-index: 1000;
+    background-color: #aaa;
+    width: 100%;
+    height: 100%;
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.add-container.show {
+    display: flex;
+}
+
+.add-container h1{
+    width: 200px;
+    font-size: 25px;
+    text-align: center;
+}
+
+.add-container label {
+    font-size: 10px;
+    width: 400px;
+}
+
+.add-container textarea{
+    width: 390px;
+}
+
+.navigation {
+    display: flex;
+    margin: 20px 0;
+}
+
+.navigation .nav-button {
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.navigation p {
+    margin: 0 25px;
+}
+
+
+#show {
+    box-shadow: rgba(0, 0, 0, 0.3);
+    border: 0.3px rgba(0, 0, 0, 0.3) solid;
+}
+
+.form-group label{
+    display: block;
+}
