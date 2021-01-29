@@ -75,4 +75,33 @@ function updateCurrentText(){
     currentEl.innerText = `${currentActiveCard +1 }/${cardsEl.length}`;
 }
 
+nextBtn.addEventListener('click',() => {
+    // 实现当前卡片左滑
+    cardsEl[currentActiveCard].className = "card left";
+
+    // 进入数据下一项
+    currentActiveCard = currentActiveCard + 1;
+    if( currentActiveCard > currentActiveCard.length -1 ){
+            currentActiveCard = currentActiveCard.length - 1;
+    }
+    // 让下一项显示出来
+    cardsEl[currentActiveCard].className = "card active";
+    updateCurrentText();
+})
+
+prevBtn.addEventListener('click',() => {
+    // 实现当前卡片右滑
+    cardsEl[currentActiveCard].className = "card right";
+
+    // 进入数据上一项
+    currentActiveCard = currentActiveCard - 1;
+    if( currentActiveCard < 0){
+            currentActiveCard = 0;
+    }
+    // 展示前一项
+    cardsEl[currentActiveCard].className = "card active";
+    updateCurrentText();
+});
+
+
 createCards();
