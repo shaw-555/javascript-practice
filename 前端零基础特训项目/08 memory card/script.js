@@ -103,5 +103,20 @@ prevBtn.addEventListener('click',() => {
     updateCurrentText();
 });
 
+showBtn.addEventListener('click', () => {
+    addContainer.classList.add('show');
+});
+
 
 createCards();
+
+clearBtn.addEventListener("click", () => {
+    console.log(cardsContainer);
+    let cardA = document.querySelector(".card.active");
+    console.log(cardA);
+    cardsContainer.removeChild(cardA);
+    console.log(cardsContainer);
+    currentActiveCard = -1;
+    cardsEl.length = 0
+    updateCurrentText();
+});
