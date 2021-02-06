@@ -43,6 +43,71 @@ function updateDOM( providedData = data ){
         const element = document.createElement("div");
         element.classList.add('person');
         element.innerHTML = `<strong>${item.name}</strong> ${item.money}`;
-        main.appendChild(element);
+        main.appendChild(element);// 不要打成 ’element‘
       })
 }
+
+function moneyDouble(){
+    console.log(data);
+    data = data.map((obj) => {
+      return {...obj , money:obj.money*2}
+    });
+    console.log(data);
+    updateDOM(data);
+}
+
+function sortBillionaires(){
+    data.sort((a,b)=>{
+      if (a.money > b.money){
+        return 1;
+      }
+      else if(a.money <b.money){
+        return -1;
+      }else{
+        return 0;
+      }
+
+    });
+    updateDOM();
+}
+
+function showMillionaires(){
+  console.log(data);
+  data = data.filter((obj) => {
+    return obj.money > 100000;
+  })
+  console.log(data);
+  updateDOM();
+}
+
+function calculateWealth(){
+  let sum = 0;
+  console.log(data);
+  for(let i =0 ; i< data.length; i++){
+    sum += data[i].money
+  }
+  console.log(sum);
+  data = [];
+  updateDOM();
+  const element = document.createElement("div");
+  element.classList.add('person');
+  element.innerHTML = `<strong>sum</strong> ${sum}`;
+  main.appendChild(element);// 不要打成 ’element‘
+
+
+}
+
+// 添加账户的逻辑
+addUserBtn.addEventListener("click",getRandomUser);
+
+// 资金翻倍的逻辑
+doubleBtn.addEventListener("click",moneyDouble);
+
+// 排行
+sortBtn.addEventListener("click",sortBillionaires);
+
+// 展示百万富翁
+showMillionairesBtn.addEventListener("click", showMillionaires);
+
+// 计算总金额
+calculateWealthBtn.addEventListener("click", calculateWealth);
