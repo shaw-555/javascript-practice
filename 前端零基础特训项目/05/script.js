@@ -80,19 +80,23 @@ function showMillionaires(){
   updateDOM();
 }
 
+function formatMoney(number) {
+  return "$" + number.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, "$&,");
+}
+
+
 function calculateWealth(){
-  let sum = 0;
-  console.log(data);
-  for(let i =0 ; i< data.length; i++){
-    sum += data[i].money
-  }
-  console.log(sum);
-  data = [];
-  updateDOM();
-  const element = document.createElement("div");
-  element.classList.add('person');
-  element.innerHTML = `<strong>sum</strong> ${sum}`;
-  main.appendChild(element);// 不要打成 ’element‘
+  // let sum = 0;
+  // console.log(data);
+  // for(let i =0 ; i< data.length; i++){
+  //   sum += data[i].money
+  // }
+  // console.log(sum);
+  const sum = data.reduce((acc,user) => (acc += user.money),0)
+
+  const wealthEl = document.createElement("div");
+  wealthEl.innerHTML = `<h3>Total Wealth:<strong>${sum}</strong>  </h3>`;
+  main.appendChild(wealthEl);// 不要打成 ’element‘
 
 
 }
