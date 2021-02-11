@@ -84,8 +84,24 @@ function addMealToDOM(meal) {
     `
 }
 
+// 第六步
+function getRandomMeal(){
+    mealsEl.innerHTML="";
+    resultHeading.innerHTML="";
+
+    // 从random页那随机数据即可
+    fetch(`https://www.themealdb.com/api/json/v1/1/random.php`)
+    .then(res => res.json())
+    .then(data => {
+        const meal = data.meals[0];
+        addMealToDOM(meal);
+    })
+  
+}
+
 // 第二部 设置事件监听
 submit.addEventListener("submit", searchMeal);
+random.addEventListener("click", getRandomMeal);
 
 mealsEl.addEventListener('click', e => {
     const mealInfo = e.path.find(item => {
