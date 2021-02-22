@@ -35,10 +35,38 @@ function addTransactionDOM(transaction){
     list.appendChild(item);
 }
 
+// 更新余额
+function updateValues(){
+    //console.log(transactions);
+    const total = transactions.
+                  map(transactions => transactions.amount)
+                  .reduce((acc,item)=> (acc+=item),0);
+    console.log(total);
+
+    const income = transactions
+                   .filter( transaction => transaction.amount>0)
+                   .map(transaction => transaction.amount)
+                   .reduce((acc,item) => (acc += item),0);
+
+    const outcome = transactions
+                   .filter( transaction => transaction.amount<=0)
+                   .map(transaction => transaction.amount)
+                   .reduce((acc,item) => (acc += item),0);
+
+    balance.innerText = `$${total}`;
+
+    money_plus.innerText = `$${income}`;
+
+    money_minus.innerText = `$${outcome}`;
+    
+    console.log(total, income, outcome);
+}
+
 // 初始化应用
 function init(){
     list.innerHTML ='';
     transactions.forEach(addTransactionDOM);
 };
 
+updateValues();
 init();
