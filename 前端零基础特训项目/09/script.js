@@ -16,6 +16,41 @@ const dummyTransactions = [
 
 let transactions = dummyTransactions;
 
+// 设置addTransaction函数
+
+function addTransaction(e){
+    e.preventDefault();
+    
+    if(text.value.trim() === "" || amount.value.trim() === "" ){
+        alert("请输入项目名称和金额");
+    }else {
+        const transaction ={
+            id : generateID(),
+            text: text.value,
+            amount: amount.value
+        };
+        transactions.push(transaction);
+        addTransactionDOM(transaction);
+        updateValues();
+
+        text.value = "";
+        amount.value = "";
+    }
+}
+
+// 设置removeTransaction函数
+function removeTransaction(id){
+    transactions = transactions.filter( transaction => 
+        transaction.id !== id );
+        init();
+
+}
+
+// 生成ID函数
+function generateID(){
+    return Math.floor(Math.random()*100000000 );
+}
+
 // 添加transaction到dom节点DOM list
 function addTransactionDOM(transaction){
     // 获得金额前面的符号
@@ -28,9 +63,12 @@ function addTransactionDOM(transaction){
     item.classList.add(transaction.amount < 0 ? 'minus': 'plus');
 
     item.innerHTML = `
-        ${transaction.text} <span>${sign}${Math.abs(transaction.amount)}</
-        span><button class="delete-btn">x</button>
-    `;
+  ${transaction.text} <span>${sign}${Math.abs(
+    transaction.amount
+  )}</span><button class="delete-btn" onclick="removeTransaction(${
+    transaction.id
+  })">x</button>
+  `;
 
     list.appendChild(item);
 }
@@ -66,7 +104,9 @@ function updateValues(){
 function init(){
     list.innerHTML ='';
     transactions.forEach(addTransactionDOM);
+    updateValues();
 };
 
-updateValues();
 init();
+
+form.addEventListener("submit", addTransaction);
