@@ -7,14 +7,20 @@ const form = document.getElementById("form");
 const text = document.getElementById("text");
 const amount = document.getElementById("amount");
 
-const dummyTransactions = [
-    { id: 1, text:'鲜花' , amount: -20},
-    { id: 2, text:'薪酬' , amount: 300},
-    { id: 3, text:'书籍' , amount: -10},
-    { id: 4, text:'相机' , amount: 400},
-]; 
+// const dummyTransactions = [
+//     { id: 1, text:'鲜花' , amount: -20},
+//     { id: 2, text:'薪酬' , amount: 300},
+//     { id: 3, text:'书籍' , amount: -10},
+//     { id: 4, text:'相机' , amount: 400},
+// ]; 
 
-let transactions = dummyTransactions;
+const localStorageTransactions = JSON.parse(
+    localStorage.getItem('transactions')
+);
+
+let transactions = 
+                   localStorage.getItem("transactions") !== null ? 
+                   localStorageTransactions : [];
 
 // 设置addTransaction函数
 
@@ -27,11 +33,12 @@ function addTransaction(e){
         const transaction ={
             id : generateID(),
             text: text.value,
-            amount: amount.value
+            amount: Number(amount.value)
         };
         transactions.push(transaction);
         addTransactionDOM(transaction);
         updateValues();
+        updateLocalStorage();
 
         text.value = "";
         amount.value = "";
@@ -42,8 +49,13 @@ function addTransaction(e){
 function removeTransaction(id){
     transactions = transactions.filter( transaction => 
         transaction.id !== id );
+        updateLocalStorage();
         init();
+}
 
+// 更新本地存储数据
+function updateLocalStorage(){
+    localStorage.setItem("transactions", JSON.stringify(transactions));
 }
 
 // 生成ID函数
@@ -76,17 +88,19 @@ function addTransactionDOM(transaction){
 // 更新余额
 function updateValues(){
     //console.log(transactions);
-    const total = transactions.
+    let total = transactions.
                   map(transactions => transactions.amount)
                   .reduce((acc,item)=> (acc+=item),0);
+    total = +total;
     console.log(total);
 
-    const income = transactions
+    let income = transactions
                    .filter( transaction => transaction.amount>0)
                    .map(transaction => transaction.amount)
                    .reduce((acc,item) => (acc += item),0);
+    income = +income;
 
-    const outcome = transactions
+    let outcome = transactions
                    .filter( transaction => transaction.amount<=0)
                    .map(transaction => transaction.amount)
                    .reduce((acc,item) => (acc += item),0);
