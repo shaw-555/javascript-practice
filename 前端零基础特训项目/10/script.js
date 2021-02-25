@@ -61,6 +61,21 @@ function nextSong(){
     playSong();
 }
 
+function updateProgress(e){
+    const { duration, currentTime } = e.srcElement;
+    console.log(`duration is ${duration}` ,`current time is ${currentTime} ` );
+    let percent = (currentTime / duration) *100 ;
+    percent = percent.toString() + '%';
+    console.log(`width is ${percent}`);
+    progress.style.width = percent;
+}
+
+// function updateProgress(e) {
+//     const { duration, currentTime } = e.srcElement;
+//     const progressPercent = (currentTime / duration) * 100;
+//     progress.style.width = `${progressPercent}%`;
+//   }
+
 // 事件监听
 playBtn.addEventListener('click', () => {
     const isPlaying = musicContainer.classList.contains('play');
@@ -75,3 +90,6 @@ playBtn.addEventListener('click', () => {
 // 切换歌曲
 prevBtn.addEventListener("click", prevSong);
 nextBtn.addEventListener("click", nextSong);
+
+// 更新进度条
+audio.addEventListener("timeupdate", updateProgress);
