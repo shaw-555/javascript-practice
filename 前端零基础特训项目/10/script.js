@@ -23,7 +23,7 @@ loadsong(songs[songIndex]);
 // loadsong
 function loadsong(song){
     title.innerText = song;
-    audio.src = `music/${song}.mp3`;
+    audio.src = `music/${song}.mp3`;   
     cover.src = `images/${song}.jpg`;
 }
 
@@ -41,6 +41,26 @@ function pauseSong(){
     audio.pause();
 }
 
+// prevSong
+function prevSong(){
+    songIndex--;
+    if(songIndex< 0){
+        songIndex = songs.length - 1;
+    }
+    loadsong(songs[songIndex]);
+    playSong();
+}
+
+function nextSong(){
+    songIndex++;
+    if(songIndex > songs.length-1){
+        songIndex = 0;
+    }
+    console.log(songIndex);
+    loadsong(songs[songIndex]);
+    playSong();
+}
+
 // 事件监听
 playBtn.addEventListener('click', () => {
     const isPlaying = musicContainer.classList.contains('play');
@@ -51,3 +71,7 @@ playBtn.addEventListener('click', () => {
         playSong();
     }
 });
+
+// 切换歌曲
+prevBtn.addEventListener("click", prevSong);
+nextBtn.addEventListener("click", nextSong);
