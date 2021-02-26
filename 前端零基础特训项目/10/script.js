@@ -63,10 +63,10 @@ function nextSong(){
 
 function updateProgress(e){
     const { duration, currentTime } = e.srcElement;
-    console.log(`duration is ${duration}` ,`current time is ${currentTime} ` );
+    //console.log(`duration is ${duration}` ,`current time is ${currentTime} ` );
     let percent = (currentTime / duration) *100 ;
     percent = percent.toString() + '%';
-    console.log(`width is ${percent}`);
+    //console.log(`width is ${percent}`);
     progress.style.width = percent;
 }
 
@@ -75,6 +75,19 @@ function updateProgress(e){
 //     const progressPercent = (currentTime / duration) * 100;
 //     progress.style.width = `${progressPercent}%`;
 //   }
+
+function setProgress(e){
+    const width = this.clientWidth;
+    console.log(typeof width);
+    const clickX = e.offsetX;
+    console.log(typeof clickX);
+    const duration = audio.duration;
+    console.log(duration);
+
+    console.log(`the progress is ${(clickX/ width) * duration}`)
+    audio.currentTime = (clickX/ width) * duration;
+}
+
 
 // 事件监听
 playBtn.addEventListener('click', () => {
@@ -93,3 +106,4 @@ nextBtn.addEventListener("click", nextSong);
 
 // 更新进度条
 audio.addEventListener("timeupdate", updateProgress);
+progressContainer.addEventListener("click",setProgress);
