@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            background-color: salmon;
+        }
+        .block-container {
+            position: relative;
+            background-color: #fff;
+            width: 500px;
+            height: 500px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .block {
+            /* position: absolute;
+            width: 100px;
+            height: 100px;
+            background-color: red;
+            left: 50%;
+            top: 50%;
+            margin-top: -50px;
+            margin-left: -50px; */
+
+            /* position: absolute;
+            width: 100px;
+            height: 100px;
+            background-color: red;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%,-50%); */
+
+             /* 水平居中 */
+            width: 100px;
+            height: 100px;
+            background-color: red;
+            /* margin: 0 auto; */
+        }
+
+        .button-container{
+            text-align: center;
+        }
+        
+    </style>
+</head>
+<body>
+    <div class="block-container">
+        <div class="block">I am a block</div>
+    </div>
+    
+    <div class="button-container">
+        <input type="button" value="press me">
+    </div>
+</body>
+</html>
