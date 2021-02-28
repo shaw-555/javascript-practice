@@ -11,8 +11,10 @@ async function getPosts() {
     const res = await fetch(
         `http://jsonplaceholder.typicode.com/posts?_limit=${limit}&_page=${page}`
     );
+    console.log(Object.prototype.toString.call(res));
 
     const data = await res.json();
+    console.log(Object.prototype.toString.call(data));
     return data;
 }
 
