@@ -1,5 +1,5 @@
 class easyHttp {
-    get(url){
+    async get(url){
         return new Promise((resovle,reject) => {
             fetch(url)
                 .then(res => res.json())
@@ -7,7 +7,7 @@ class easyHttp {
                 .catch((error) => console.log(error));
         })
     }
-    post(url,data){
+    async post(url,data){
         return new Promise((resovle,reject) => {
             fetch(url,{
                 method:"POST",
