@@ -88,12 +88,15 @@ form.addEventListener("submit", e => {
 
 
 result.addEventListener("click", e => {
-    const clickedEl = e.target;
-    console.log(clickedEl);
-    if (clickedEl.tagName === "BUTTON") {
-      const artist = clickedEl.getAttribute("data-artist");
-      const songTitle = clickedEl.getAttribute("data-songtitle");
+    console.log(e.target);
+    console.log(e.target.tagName);
+    
+    // const clickedEl = e.target;
+    // console.log(clickedEl);
+    // if (clickedEl.tagName === "BUTTON") {
+    //   const artist = clickedEl.getAttribute("data-artist");
+    //   const songTitle = clickedEl.getAttribute("data-songtitle");
   
-      getLyrics(artist, songTitle);
-    }
+    //   getLyrics(artist, songTitle);
+    // }
   });
