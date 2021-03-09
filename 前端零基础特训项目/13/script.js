@@ -72,5 +72,72 @@ function createBox(item){
         <img src="${image}" alt="${text}" />
         <p class="info>${text}</p>
     `
+
+    // 点击按钮进行阅读
+    box.addEventListener('click', () => {
+      setTextMessage(text);
+      speakText();
+
+      // 添加acitive
+      box.classList.add('active');
+      setTimeout(()=>box.classList.remove('active'),800);
+    })
     main.appendChild(box);
 }
+
+// 初始化speechsynth
+const message = new SpeechSynthesisUtterance();
+
+// 创建空数组存储语音
+let voices = [];
+function getVoices(){
+    voices = speechSynthesis.getVoices();
+
+    voices.forEach(voice => {
+      const option = document.createElement('option');
+      option.value = voice.name;
+      option.innerText = `${voice.name} ${voice.lang}`;
+      console.log(option);
+      voicesSelect.appendChild(option);
+    })
+}
+
+// 获得文字
+function setTextMessage(text){
+  message.text = text;
+}
+ 
+// 阅读文字
+function speakText(){
+  speechSynthesis.speak(message);
+}
+
+// 切换语音
+function setVoice(e){
+  message.voice = voices.find(voice => voice.name === e.target.value)
+}
+
+// 切换语音事件监听
+speechSynthesis.addEventListener('voiceschanged',getVoices);
+
+// 切换文字框事件监听
+toggleBtn.addEventListener("click", () => {
+  document.getElementById("text-box").classList.toggle("show");
+});
+
+// 关闭按钮事件监听
+closeBtn.addEventListener('click',() => {
+    document.getElementById("text-box").classList.remove("show");
+})
+
+// select下拉框的事件监听
+voicesSelect.addEventListener('change',setVoice);
+
+// 阅读文字按钮的事件监听
+readBtn.addEventListener('click', () => {
+  setTextMessage(textarea.value);
+  speakText();
+})
+
+
+getVoices();
