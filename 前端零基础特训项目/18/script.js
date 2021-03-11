@@ -87,8 +87,8 @@ function checkOrder() {
         const personName = listItem.querySelector('.draggable').innerText.trim();
         
         if (personName == richestPeople[index]){
-            console.log(1);
-            console.log(listItem);
+            console.log(`${personName} === ${richestPeople[index]}: `, personName == richestPeople[index]);
+            listItem.classList.remove('wrong');
             listItem.classList.add('right');
         } else {
             listItem.classList.remove('right');
