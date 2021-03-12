@@ -1,4 +1,4 @@
-/* :root {
+:root {
     --border-color: gray;
     --background-color: #c3c7ca;
     --text-color: #34444f;
@@ -87,4 +87,4 @@ body {
 
 .check-btn:focus {
     outline: 0;
-} */
+}
