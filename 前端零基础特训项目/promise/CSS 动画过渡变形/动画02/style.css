@@ -1,0 +1,46 @@
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    background-color: #333;
+}
+
+.box {
+    background-color: #fff;
+    height: 200px;
+    width: 200px;
+    position: relative;
+    top: 0;
+    left: 0;
+    animation: animate1 5s forwards ease-in-out;
+}
+
+
+/* keyframes可以通过百分比来实现不同效果的设置 */
+@keyframes animate1 {
+    25% {
+        top: 0;
+        left: 300px;
+    }
+
+    50% {
+        top: 300px;
+        left: 300px;
+    }
+
+    75% {
+        top: 300px;
+        left: 0px;
+        background-color: darkgreen;
+    }
+
+    100% {
+        top: 0;
+        left: 0;
+        background-color: darkred;
+        border-radius: 100px;
+    }
+}

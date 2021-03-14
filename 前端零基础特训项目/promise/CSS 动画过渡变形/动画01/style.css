@@ -1,0 +1,41 @@
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    background-color: #333;
+}
+
+.box {
+    background-color: #fff;
+    height: 200px;
+    width: 200px;
+    position: relative;
+    /* animate1 为动画的名称，可自定义*/
+    animation-name: animate1;
+    /* animation-duration 为动画的持续时间 */
+    animation-duration: 1s;
+    /* animation-iteration-count属性为该动画执行的次数; */
+    animation-iteration-count: infinite;
+    /*  animation-fill-mode: forwards 动画执行完好，界面保持在动画结束的状态 */
+    animation-fill-mode: forwards; 
+    animation-delay: 2s;
+    animation-direction: alternate;
+    /* 动画的变化节奏函数 */
+    animation-timing-function: ease-in-out;
+}
+
+@keyframes animate1 {
+    from{
+        width: 200px;
+        top: 0;
+        left: 0;
+    }to {
+        width: 1000px;
+        background-color: cornflowerblue;
+        top: 100px;
+        left: 100px;
+    }
+}

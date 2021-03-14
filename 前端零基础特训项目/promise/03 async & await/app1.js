@@ -6,3 +6,5 @@ async function getInfo(){
 }
 
 getInfo().then(data => console.log(data));
+
+// 会造成阻塞
