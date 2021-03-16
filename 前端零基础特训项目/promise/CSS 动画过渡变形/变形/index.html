@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            background-color: #444;
+            max-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .box {
+            background-color: #eee;
+            width: 100px;
+            height: 100px;
+        }
+
+        .box:hover {
+            /* scale 中 第一个参数为水平方向的变化比例，第二个参数为垂直方向的变化比例 */
+            /* transform: scale(0.5,2); */
+
+            /* transform: translate(-100%,-100%); */
+
+            transform: skewZ(-30deg);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box"></div>
+</body>
+
+</html>
