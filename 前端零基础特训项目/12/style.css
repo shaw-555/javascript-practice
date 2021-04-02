@@ -59,7 +59,7 @@ h1 {
 }
 
 #wrong-letters {
-    display: none;
+    /* display: none; */
 }
 
 .word {
@@ -129,7 +129,9 @@ h1 {
     margin: 0;
 }
 
-.notification-containe .show {
-    transform: translateY(-50px);
-    display: none;
+.notification-container.show {
+    transform: translateY(50px);
+    display: block;
+    position: absolute;
+    bottom: 100px;
 }
