@@ -11,25 +11,94 @@ addToCartButtonsDOM.forEach(item => {
         const product = {
             image: productDOM.querySelector(".product-image").getAttribute("src"),
             name: productDOM.querySelector(".product-name").innerText,
-            price: productDOM.querySelector(".product-price").innerText
+            price: productDOM.querySelector(".product-price").innerText,
+            quantity:1
         };
+        // 将商品加入购物车数组
         cart.push(product);
 
         item.innerText = '已加入';
+        item.disabled = true;
 
+        // 拿到商品容器
+        
         // 处理购物车里面的数据
         const isIncart = cart.filter(cartItem => cartItem.name === product.name).length > 0;
         console.log(isIncart);
         // 判断
         if (isIncart) {
             cartDOM.insertAdjacentHTML("beforeend", `
-                <div class="cart-item">
-                    <img class="cart-item-image" src="${product.image}" alt="${product.name}">
-                    <h3 class="cart-item-name">${product.name}</h3>
-                    <h3 class="cart-item-price">${product.price}</h3>
-                </div>
+            <div class="cart-item">
+            <img class="cart-item-image" src="${product.image}" alt="${product.name}">
+            <h3 class="cart-item-name">${product.name}</h3>
+            <h3 class="cart-item-price">${product.price}</h3>
+            <button class="btn btn-primary btn-small btn-danger" data-action="DECREASE_ITEM">
+            &minus;
+            </button>
+            <h3 class="cart-item-quantity">${product.quantity}</h3>
+            <button class="btn btn-primary btn-small" data-action="INCREASE_ITEM">
+            &plus;
+            </button>
+            <button class="btn btn-primary btn-small btn-danger" data-action="REMOVE_ITEM">
+            &times;
+            </button>
+            </div>
             `);
         }
-    })
+        const cartItemsDOM = cartDOM.querySelectorAll(".cart-item");
 
+        console.log(cartItemsDOM);
+        cartItemsDOM.forEach(cartItemDOM => {
+            if (cartItemDOM.querySelector(".cart-item-name").innerText === product.name) {
+                // 增加按钮
+                cartItemDOM.querySelector("[data-action='INCREASE_ITEM']")
+                    .addEventListener("click", () => {
+                        cart.forEach(cartItem => {
+                            console.log(cartItem);
+                            if (cartItem.name === product.name) {
+                                cartItemDOM.querySelector(".cart-item-quantity").innerText = ++cartItem.quantity;
+                                cartItemDOM
+                                .querySelector("[data-action='DECREASE_ITEM']").classList
+                                .remove("btn-danger");
+                            }
+                        })
+
+                    })
+                    
+                // 减少按钮
+                cartItemDOM.querySelector("[data-action='DECREASE_ITEM']")
+                .addEventListener("click", () => {
+                    cart.forEach(cartItem => {
+                        console.log(cartItem);
+                        if (cartItem.name === product.name) {
+                            cartItemDOM.querySelector(".cart-item-quantity").innerText = --cartItem.quantity;
+                            if (product.quantity < 2 && product.quantity > 0) {
+                                cartItemDOM.querySelector("[data-action='DECREASE_ITEM']").classList.add("btn-danger");
+                            } else if (product.quantity <= 0) {
+                                setTimeout(cartItemDOM.style.display = "none", 700);
+                                cart = cart.filter(cartItem => cartItem.name !== product.name);
+                                item.innerText = "加入购物车";
+                                item.disabled = false;
+                            }
+                        }
+                    })
+
+                })
+                
+                // 删除按钮
+                cartItemDOM.querySelector("[data-action='REMOVE_ITEM']")
+                .addEventListener("click", () => {
+                    cart.forEach(cartItem => {
+                        cartItemDOM.style.display = "none";
+                        item.innerText = "加入购物车";
+                        item.disabled = false;
+                    })
+
+                })
+            }
+        })
+
+
+    })
+    
 });
