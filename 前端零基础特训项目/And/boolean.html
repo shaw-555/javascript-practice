@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>且逻辑运算</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: antiquewhite;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .container {
+            margin-top:10vh;
+            font-size: 3rem;
+            text-align: center;
+        }
+
+        .container select {
+            font-size: 3rem;
+        }
+
+        #result{
+            color: crimson;
+        }
+
+
+        .result-wrapper{
+            background-color: cadetblue;
+            border-radius: 15px;
+            width: 20rem;
+            display: inline-block;
+        }
+
+        #true {
+            display: none;
+        }
+
+        #false {
+            display: none;
+        }
+        
+        .center {
+            margin:  1rem auto;
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <select name="" id="input3">
+            <option value="0">0</option>
+            <option value="1">1</option>
+        </select>
+        <span id="and">且</span>
+        <select name="" id="input4">
+            <option value="0">0</option>
+            <option value="1">1</option>
+        </select>
+        <br>
+        <br>
+        <div class="result-wrapper">
+            结果是：<span class="result">??</span>
+        </div>
+        <img src="img/2.jpeg" alt="" id="current" class="center">
+        <img src="img/0.jpeg" alt="" id="false" class="center">
+        <img src="img/1.jpeg" alt="" id="true" class="center">
+
+
+        <br/>
+        <br/>
+
+    </div>
+    <script>
+        const input3 = document.getElementById('input3');
+        const input4 = document.getElementById('input4');
+        const result = document.querySelector(".result");
+        const current = document.getElementById("current");
+
+        const t = document.getElementById("true");
+        const f = document.getElementById("false");
+
+        input3.addEventListener("change", logicAndBoolean);
+        input4.addEventListener("change", logicAndBoolean);
+
+        function logicAndBoolean () {
+            result.innerText = ''
+            let value3 = input3.value === "1" ? 1 : 0;
+            let value4 = input4.value === "0" ? 0 : 1;
+            console.log('a',value4);
+            let res = (value3 && value4);
+            console.log('res',res);
+            console.log(value3,value4);
+            result.innerText = res;
+            result.innerText = res === 1 ? 1 : 0;
+
+
+            if(res){
+                current.style.display = "none";
+                f.style.display = "none";
+                t.style.display = "block";
+            }else {
+                current.style.display = "none";
+                t.style.display = "none";
+                f.style.display = "block";
+                console.log('width', f.width);
+            }
+
+
+            setTimeout(alert(result.innerText),2000);
+        }
+
+
+    </script>
+</body>
+</html>
