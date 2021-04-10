@@ -1,8 +1,37 @@
 "use strict";
 
-let cart = [];
+let cart = JSON.parse(localStorage.getItem("cart")) || [];
 const cartDOM = document.querySelector(".cart");
 const addToCartButtonsDOM = document.querySelectorAll('[data-action ="ADD_TO_CART"]');
+
+// 如果localStorge有东西，则展示购物车内容
+if (cart.length > 0) {
+    cart.forEach(cartItem => {
+        const product = cartItem;
+        cartDOM.insertAdjacentHTML("beforeend", `
+            <div class="cart-item">
+            <img class="cart-item-image" src="${product.image}" alt="${product.name}">
+            <h3 class="cart-item-name">${product.name}</h3>
+            <h3 class="cart-item-price">${product.price}</h3>
+            <button class="btn btn-primary btn-small btn-danger" data-action="DECREASE_ITEM">
+            &minus;
+            </button>
+            <h3 class="cart-item-quantity">${product.quantity}</h3>
+            <button class="btn btn-primary btn-small" data-action="INCREASE_ITEM">
+            &plus;
+            </button>
+            <button class="btn btn-primary btn-small btn-danger" data-action="REMOVE_ITEM">
+            &times;
+            </button>
+            </div>`
+        );
+        addToCartButtonsDOM.forEach(addToCartButtonDOM => {
+            const productDOM = item.parentNode;
+
+            // 未完成
+        })
+    })
+}
 
 // 遍历添加点击事件
 addToCartButtonsDOM.forEach(item => {
@@ -16,6 +45,9 @@ addToCartButtonsDOM.forEach(item => {
         };
         // 将商品加入购物车数组
         cart.push(product);
+
+        // 实现本地存储
+        localStorage.setItem("cart", JSON.stringify(cart));
 
         item.innerText = '已加入';
         item.disabled = true;
@@ -59,7 +91,9 @@ addToCartButtonsDOM.forEach(item => {
                                 cartItemDOM.querySelector(".cart-item-quantity").innerText = ++cartItem.quantity;
                                 cartItemDOM
                                 .querySelector("[data-action='DECREASE_ITEM']").classList
-                                .remove("btn-danger");
+                                    .remove("btn-danger");
+                                // 实现本地存储
+                                localStorage.setItem("cart", JSON.stringify(cart));
                             }
                         })
 
@@ -72,6 +106,8 @@ addToCartButtonsDOM.forEach(item => {
                         console.log(cartItem);
                         if (cartItem.name === product.name) {
                             cartItemDOM.querySelector(".cart-item-quantity").innerText = --cartItem.quantity;
+                            // 实现本地存储
+                            localStorage.setItem("cart", JSON.stringify(cart));
                             if (product.quantity < 2 && product.quantity > 0) {
                                 cartItemDOM.querySelector("[data-action='DECREASE_ITEM']").classList.add("btn-danger");
                             } else if (product.quantity <= 0) {
@@ -92,6 +128,11 @@ addToCartButtonsDOM.forEach(item => {
                         cartItemDOM.style.display = "none";
                         item.innerText = "加入购物车";
                         item.disabled = false;
+
+                        cart = cart.filter(cartItem => cartItem.name !== product.name);
+
+                        // 实现本地存储
+                        localStorage.setItem("cart", JSON.stringify(cart));
                     })
 
                 })
@@ -102,3 +143,4 @@ addToCartButtonsDOM.forEach(item => {
     })
     
 });
+
