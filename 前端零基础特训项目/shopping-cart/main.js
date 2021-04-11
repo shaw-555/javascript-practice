@@ -277,6 +277,37 @@ function clearCart() {
     }
 }
 
+function checkout() {
+    // paypal
+    let paypalForHTML = `
+    <form
+      action="https://www.paypal.com/cgi-bin/webscr"
+      id="paypal-form"
+      method="post"
+    >
+      <input type="hidden" name="cmd" value="_cart" />
+      <input type="hidden" name="upload" value="1" />
+      <input type="hidden" name="business" value="27732357@qq.com" />
+    `;
+  
+    cart.forEach((cartItem, index) => {
+      ++index;
+      paypalForHTML += `
+        <input type="hidden" name="item_name_${index}" value="${cartItem.name}" />
+        <input type="hidden" name="amount_${index}" value="${cartItem.price}" />
+        <input type="hidden" name="quantity_${index}" value="${cartItem.quantity}" />
+      `;
+    });
+  
+    paypalForHTML += `
+      <input type="submit" value="PayPal" />
+    </form>
+    `;
+  
+    document.querySelector('body').insertAdjacentHTML('beforeend', paypalForHTML);
+    document.getElementById('paypal-form').submit();
+}
+
 // 计算商品总价
 function saveCart() {
     localStorage.setItem("cart", JSON.stringify(cart));
