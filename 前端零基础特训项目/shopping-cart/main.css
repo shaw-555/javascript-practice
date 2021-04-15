@@ -209,6 +209,7 @@ p {
     display: flex;
     justify-content: space-between;
     /* margin-top: var(--base-padding); */
+    /* justify-content: space-between; */
 }
 
 /* button */
