@@ -43,3 +43,30 @@ const people = [
 
 const [{ name }] = people;
 console.log(name);
+
+class Car {
+    constructor(option) {
+        this.title = option.title;
+        this.size = option.size;
+    }
+    drive() {
+        return 'Vroom';
+    }
+}
+
+const car = new Car({ title: "new" });
+
+console.log(car);
+console.log(car.drive());
+
+class Toyota extends Car {
+    constructor(options) {
+        super(options);
+        this.color = options.color;
+    }
+}
+
+
+
+const toyota = new Toyota({ color: "red", title: "Focus" });
+console.log(toyota.drive());
