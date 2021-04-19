@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="./bower_components/vue/dist/vue.js"></script>
+</head>
+<body>
+    <!-- 复合组件 -->
+    <!-- parent -> child-1, child-sceond -->
+    <div id="app">
+        <parent></parent>
+    </div>
+    <script>
+        const desc ="description";
+        const resume = "resume";
+
+        Vue.component(desc,{
+            template:`
+                <div>
+                    <h1>{{title}}</h1>
+                    <p>{{content}}</p>
+                </div>
+            `,
+            data(){
+                return {
+                    title:'Yankee Shaw',
+                    content:'lorem jfaksjdaja;d'
+                }
+            }
+        });
+
+        Vue.component(resume,{
+            template:`
+                <div>
+                    <div v-for="item in arr">{{item+1}}</div>
+                </div>
+            `,
+            data(){
+                return {
+                    arr : [123,456,789,110]
+                }
+            }
+        });
+
+        Vue.component('parent',{
+            template:`
+                <div>
+                    <description></description>
+                    <resume></resume>
+                </div>
+            `
+        });
+
+        var m = {
+
+        };
+
+        var mv = new Vue({
+            el:'#app',
+            data:m,
+        })
+    </script>
+</body>
+</html>

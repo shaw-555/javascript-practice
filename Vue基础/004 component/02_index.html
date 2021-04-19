@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="./bower_components/vue/dist/vue.js"></script>
+    <style>
+    </style>
+</head>
+<body>
+    <div id="app" >
+        <my-component></my-component>
+    </div>
+    <!-- 1. 创建组件 -->
+    <!--    组件的命名不是小驼峰的，用"-"串联的小写字母单词 -->
+    <!--    template中的标记必须再一个根标记下面，不可以多个并列 -->
+    <script>
+        Vue.component('my-component',{
+            template: `
+            <div>
+                <div>
+                    <h1>王校长的第一个组件</h1>
+                    <h2>王校长的另一个组件</h2>
+                </div>
+                <div>
+                    <h3>王校长的另一个组件</h3>
+                </div>
+            </div>`
+        });
+
+        var m = {
+        };
+
+        var vm = new Vue({
+            el: '#app',
+            data: m,
+            methods: {
+
+            }
+        });
+    </script>
+</body>
+</html>

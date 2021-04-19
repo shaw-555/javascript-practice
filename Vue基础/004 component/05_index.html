@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="./bower_components/vue/dist/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <input type="button" value="切换" @click="beOrNotToBe">
+        <my-component v-show="isShow"></my-component>
+    </div>
+    <script>
+        Vue.component('my-component', {
+            template: `
+                <div>
+                    <input type="button" @click="handleClick" value="点击" />
+                    <h4>Hello {{count}}</h4>
+                </div>
+            `,
+            data: function(){
+                return {
+                    count: 0
+                }
+            },
+            methods: {
+                handleClick: function(){
+                    this.count++;
+                }
+            },
+            beforeCreate: function(){
+                console.log('called before being created!');
+            },
+            created: function(){
+                console.log('called when created!');
+            },
+            beforeMount: function(){
+                console.log('called before being mounted!');
+            },
+            mounted: function(){
+                console.log('called when mounted!');
+            },
+            beforeUpdate: function(){
+                console.log('called before being updated!');
+            },
+            updated: function(){
+                console.log('called when updated');
+            },
+            beforeDestroy: function(){
+                console.log('called before being destoryed!');
+            },
+            destroyed: function(){
+                console.log('called when destroyed!');
+            }
+
+        });
+
+        var m = {
+            isShow: true
+        };
+
+        var vm = new Vue({
+            el: '#app',
+            data: m,
+            methods: {
+                beOrNotToBe: function(){
+                    // if(this.isShow){
+                    //     this.isShow = false;
+                    // }else{
+                    //     this.isShow = true;
+                    // }
+                    this.isShow = !this.isShow;
+                }
+            }
+        });
+    </script>
+</body>
+</html>
