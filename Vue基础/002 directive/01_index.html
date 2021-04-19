@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="./bower_components/vue/dist/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <input type="button" value="不显示" @click="show">
+        <p v-if="showP">1. 能够被控制显示还是不显示的p标签</p>
+        <p v-if="num1">2. 如果{{num1}}是0不显示</p>
+        <p v-if="num2">3. 如果{{num2}}是0不显示</p>
+        <p v-if="num2 > 15">4. 如果{{num2}} > 15 显示</p>
+        <p v-if="num2 > 3">5. 如果{{num2}} > 3 显示</p>
+        <p v-if="str1">6. 如果'{{str1}}' 是空字符串 不显示</p>
+        <p v-if="str2">7. 如果'{{str2}}' 是空字符串 不显示</p>
+        <p v-if="str2.indexOf('c') > 0">8. 含有有c，显示</p>
+        <p v-if="nan">9. NaN</p>
+        <p v-if="obj1">10. null</p>
+        <p v-if="obj2">11. undefined</p>
+
+        <p v-show="showP">12. 能够被控制显示还是不显示的p标签</p>
+
+        <p v-if="showP">13. showP true, 显示</p>
+        <p v-else>13. showP false, 显示</p>
+        <p v-show="arr.length > 0" >14. arr不为空时显示</p>
+        <input type="button" value="decre" @click="decre">
+        <p v-if="rTrue()">14. 函数返回true，也行</p>
+    </div>
+    <script type="text/javascript">
+        var m = {
+            showP: true,
+            num1: 0,
+            num2: 5,
+            str1: '',
+            str2: 'ab',
+            nan: NaN,
+            obj1: null,
+            obj2: undefined,
+            arr: [1,2,3,4,5]
+        };
+
+        var vm = new Vue({
+            el: '#app',
+            data: m,
+            methods: {
+                show: function(){
+                    this.showP = !this.showP;
+                },
+                rTrue: function(){
+                    return false;
+                },
+                decre(){
+                    this.arr.pop();
+                    console.log(this.arr.length);
+                }
+            }
+        });
+    </script>
+</body>
+</html>

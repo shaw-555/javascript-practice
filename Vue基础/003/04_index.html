@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="./bower_components/vue/dist/vue.js"></script>
+    <style>
+        
+    </style>
+</head>
+<body>
+    <div id="app">
+        <!-- v-show="expression": true 显示，false隐藏 -->
+        <!-- 自定义事件 v-change="expression": >0 显示，<=0隐藏 -->
+        <input type="button" value="++" @click="countAdd">
+        <input type="button" value="--" @click="countDelete">
+        {{count}}
+        <h1 v-gebilaowang="count">如果不++，你看不见我——王校长说</h1>
+    </div>
+    <script>
+        var m = {
+            count: 0
+        };
+
+        var vm = new Vue({
+            el: '#app',
+            data: m,
+            methods: {
+                countAdd: function(){
+                    this.count++;
+                },
+
+                countDelete: function(){
+                    this.count--;
+                }
+            },
+            directives:{
+                gebilaowang:{
+                    bind: function(el, bindings){
+                        console.log('binding.....');
+                        console.log(el, bindings);
+                        if(bindings.value > 3){
+                            el.setAttribute('style', 'display: block');
+                        }else{
+                            el.setAttribute('style', 'display: none');
+                        }
+                    },
+                    update: function(el, bindings){
+                        console.log('updating.....');
+                        console.log(el, bindings);
+                        if(bindings.value > 3){
+                            el.setAttribute('style', 'display: block');
+                        }else{
+                            el.setAttribute('style', 'display: none');
+                        }
+                    },
+                    unbind: function(el, bindings){
+                        alert('111');
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>

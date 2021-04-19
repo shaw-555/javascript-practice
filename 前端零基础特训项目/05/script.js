@@ -8,12 +8,9 @@ const calculateWealthBtn = document.getElementById("calculate-wealth");
 
 let data = [];
 
-getRandomUser();
-getRandomUser();
-getRandomUser();
-getRandomUser();
-getRandomUser();
-getRandomUser();
+for (let index = 0; index < 6; index++) {
+  getRandomUser();
+}
 
 // Fetch random user and add money
 async function getRandomUser() {
@@ -92,7 +89,7 @@ function calculateWealth(){
   //   sum += data[i].money
   // }
   // console.log(sum);
-  const sum = data.reduce((acc,user) => (acc += user.money),0)
+  const sum = data.reduce((acc, user) => (acc += user.money), 0);
 
   const wealthEl = document.createElement("div");
   wealthEl.innerHTML = `<h3>Total Wealth:<strong>${sum}</strong>  </h3>`;

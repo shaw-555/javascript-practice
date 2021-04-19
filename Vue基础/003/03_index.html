@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="./bower_components/vue/dist/vue.js"></script>
+    <style>
+
+    </style>
+</head>
+<body>
+    <div id="app">
+        {{myVal1}}
+        <br/>
+        <!-- 仅仅在blur 和 离开时 发挥效果 -->
+        <input type="text" v-model.lazy="myVal1">
+        <br/>
+        {{myVal2}}
+        <br/>
+        <!-- 仅仅在输入类型为数字时生效 -->
+        <input type="text" v-model.number="myVal2">
+        <br/>
+        {{myVal3}}
+        <br/>
+        <input type="text" v-model.trim="myVal3">
+    </div>
+    <script>
+        var m = {
+            myVal1: 0,
+            myVal2: 0,
+            myVal3: ''
+        };
+
+        var vm = new Vue({
+            el: '#app',
+            data: m,
+            methods: {
+
+            }
+        });
+    </script>
+</body>
+</html>

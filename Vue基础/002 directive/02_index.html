@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="./bower_components/vue/dist/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <!-- 不可以的方法 -->
+        <!-- <ul>
+            <li>{{array[0]}}</li>
+            <li>{{array[1]}}</li>
+            <li>{{array[2]}}</li>
+            <li>{{array[3]}}</li>
+            <li>{{array[4]}}</li>
+        </ul> -->
+        <ul>
+            <!-- 一般的循环 数组 -->
+            <!-- <li v-for="val in array">{{val}}</li> -->
+            <!-- 有下标的循环 数组 -->
+            <!-- <li v-for="(gebiwangxiaozhang, gebilaowang) in array">val = {{gebiwangxiaozhang}}; index = {{gebilaowang}}</li> -->
+            <!-- 一般的循环 JSON -->
+            <!-- <li v-for="val in json">{{val}}</li> -->
+            <!-- 带有key的循环 JSON -->
+            <!-- <li v-for="(val, key) in json">val = {{val}}, key = {{key}}</li> -->
+            <!-- 带有key的循环 JSON -->
+            <li v-for="(val, key, index) in json">val = {{val}}, key = {{key}}, index = {{index +1}}</li>
+        </ul>
+        <ol v-if="">
+            <li v-for="(val,key,index) in json">{{val}}-{{key}}-{{index+1}}</lii>
+        </ol>
+    </div>
+    <script type="text/javascript">
+        var m = {
+            array: ['Beijing', 'Jinan', 'Shanghai', 'Hangzhou', 'Sulawesi'],
+            json: {
+                firstCity: 'Beijing',
+                secondCity: 'Jinan',
+                thirdCity: 'Shanghai',
+                fourthCity: 'Hangzhou',
+                fivthCity: 'Sulawesi'
+            }
+        };
+
+        var vm = new Vue({
+            el: '#app',
+            data: m,
+            methods: {
+            }
+        });
+    </script>
+</body>
+</html>

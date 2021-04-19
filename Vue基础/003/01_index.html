@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="./bower_components/vue/dist/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <!-- 冒泡 -->
+        <!-- <div @click="func($event)">
+            <input type="button" value="按钮1">
+            <input type="button" value="按钮2">
+            <input type="button" value="按钮3">
+        </div> -->
+
+        <!-- 冒泡的stop -->
+        <!-- <div @click="func2">
+            <div @click.stop="func($event)">
+                <input type="button" value="按钮1">
+                <input type="button" value="按钮2">
+                <input type="button" value="按钮3">
+            </div>
+        </div> -->
+
+        <!-- <a href="http://www.baidu.com" @click.prevent="func3">百度</a> -->
+
+        <input type="text" @keyup.enter="func4" />
+    </div>
+    <script>
+        var m = {
+
+        };
+
+        var vm = new Vue({
+            el: '#app',
+            data: m,
+            methods: {
+                // func: function(event){
+                //     console.log(event, event.target);
+                //     console.log('冒泡中。。。');
+                // },
+                // func2: function(event){
+                //     console.log('冒泡2中。。。');
+                // }
+
+                // func3: function(){
+                //     alert('去百度啦，不想让他去！');
+                //     // console.log('去百度啦，不想让他去！');
+                // }
+
+                func4: function(){
+                    console.log('按键了！');
+                }
+            }
+        });
+    </script>
+</body>
+</html>
