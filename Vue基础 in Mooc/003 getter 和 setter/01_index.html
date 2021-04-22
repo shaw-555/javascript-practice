@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="./bower_components/vue/dist/vue.js"></script>
+    <!-- 1. 引入router -->
+    <script src="./bower_components/vue-router/dist/vue-router.js"></script>
+    <style>
+        .base {
+            width: 320px;
+            height: 400px;
+            background-color: #ddd;
+            border: 3px solid #1b6583;
+            padding: 15px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        {{fullName}}
+    </div>
+    <script>
+        var vm = new Vue({
+            el:'#app',
+            data:{
+                firstName : 'Yankee',
+                lastName: 'Shaw'
+            },
+            computed:{
+                fullName:{
+                    get: function(){
+                        return this.firstName + ' ' + this.lastName
+                    },
+                    set: function(value){
+                        // computed属性是需要缓存的，会缓存其依赖的
+                        // 变量，在其变化时，进行重新计算
+                        let arr = value.split(" ");
+                        this.firstName = arr[0];
+                        this.lastName = arr[1];
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>
