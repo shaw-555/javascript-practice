@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="./bower_components/vue/dist/vue.js"></script>
+    <!-- 1. 引入router -->
+    <script src="./bower_components/vue-router/dist/vue-router.js"></script>
+    <style>
+        .base {
+            width: 320px;
+            height: 400px;
+            background-color: #ddd;
+            border: 3px solid #1b6583;
+            padding: 15px;
+            text-align: center;
+        }
+
+        .activated {
+            color: #1b6583;
+            background-color: aqua;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <counter :count="2" @change="calculmator" ref="one"></counter>
+        <counter :count="3" @change="calculmator" ref="two"></counter>
+        <counter :count="100"></counter>
+        <div>{{total}}</div>
+    </div>
+    <script>
+        var counter = {
+            template:`<div @click="handleClick">{{number}}</div>`,
+            props:['count'],
+            data: function() {
+                return {
+                    number: this.count
+                }
+            },
+            methods:{
+                handleClick(count){
+                    this.number++;
+                    this.$emit('change',1);
+                }
+            }
+        }
+
+        var vm = new Vue({
+            el:'#app',
+            data:{
+                total:5
+            },
+            components:{
+                counter:counter
+            },
+            methods: {
+                calculmator(count){
+                    console.log(count);
+                    this.total += count;
+                    console.log(this.$refs.one.count);
+                    // return this.$refs.one.count+ this.$refs.two.count;
+                }
+            },
+        });
+    </script>
+</body>
+</html>

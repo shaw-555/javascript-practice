@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="./bower_components/vue/dist/vue.js"></script>
+    <!-- 1. 引入router -->
+    <script src="./bower_components/vue-router/dist/vue-router.js"></script>
+    <style>
+        .base {
+            width: 320px;
+            height: 400px;
+            background-color: #ddd;
+            border: 3px solid #1b6583;
+            padding: 15px;
+            text-align: center;
+        }
+
+        .activated {
+            color: #1b6583;
+            background-color: aqua;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <Child>
+            <h1 slot="title">标题</h1>
+            <p slot="para">氨基酸地方卡加斯；砥砺奋进爱丽丝；dfjajks</p>
+        </Child>
+    </div>
+    <script>
+        Vue.prototype.bus = new Vue();
+
+        Vue.component('Child',{
+            template:`<div>
+                        <slot name="title"></slot>
+                        <h1>天上地下，刘云最美</h1>
+                        <slot name="para"></slot>
+                </div>`,
+        })
+
+        var vm = new Vue({
+            el:'#app',
+
+        });
+    </script>
+</body>
+</html>
